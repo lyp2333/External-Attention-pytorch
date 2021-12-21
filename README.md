@@ -1,8 +1,6 @@
 
-<img src="./FightingCVimg/LOGO.gif" height="200" width="400"/>
 
-
-# FightingCV Codebase For [***Attention***](#attention-series),[***Backbone***](#backbone-series), [***MLP***](#mlp-series), [***Re-parameter***](#re-parameter-series), [**Convolution**](#convolution-series)
+# [***Attention***](#attention-series),[***Backbone***](#backbone-series), [***MLP***](#mlp-series), [***Re-parameter***](#re-parameter-series), [**Convolution**](#convolution-series)
 
 ![](https://img.shields.io/badge/fightingcv-v0.0.1-brightgreen)
 ![](https://img.shields.io/badge/python->=v3.0-blue)
@@ -14,42 +12,6 @@
 *Don't forget to ***follow*** me to learn about project updates.*
 
 -------
-
-Hello，大家好，我是小马🚀🚀🚀
-
-***For 小白（Like Me）：***
-最近在读论文的时候会发现一个问题，有时候论文核心思想非常简单，核心代码可能也就十几行。但是打开作者release的源码时，却发现提出的模块嵌入到分类、检测、分割等任务框架中，导致代码比较冗余，对于特定任务框架不熟悉的我，**很难找到核心代码**，导致在论文和网络思想的理解上会有一定困难。
-
-***For 进阶者（Like You）：***
-如果把Conv、FC、RNN这些基本单元看做小的Lego积木，把Transformer、ResNet这些结构看成已经搭好的Lego城堡。那么本项目提供的模块就是一个个具有完整语义信息的Lego组件。**让科研工作者们避免反复造轮子**，只需思考如何利用这些“Lego组件”，搭建出更多绚烂多彩的作品。
-
-***For 大神（May Be Like You）：***
-能力有限，**不喜轻喷**！！！
-
-***For All：***
-本项目就是要实现一个既能**让深度学习小白也能搞懂**，又能**服务科研和工业社区**的代码库。作为[【论文解析项目】](https://github.com/xmu-xiaoma666/FightingCV-Paper-Reading)的补充，本项目的宗旨是从代码角度，实现🚀**让世界上没有难读的论文**🚀。
-
-（同时也非常欢迎各位科研工作者将自己的工作的核心代码整理到本项目中，推动科研社区的发展，会在readme中注明代码的作者~）
-
-
-
-## 公众号 & 微信交流群
-
-欢迎大家关注公众号：**FightingCV**
-
-公众号**每天**都会进行**论文、算法和代码的干货分享**哦~
-
-
-已建立**机器学习/深度学习算法/计算机视觉/多模态交流群**微信交流群！
-
-（加不进去可以加微信：**775629340**，记得备注【**公司/学校+方向+ID**】）
-
-**每天在群里分享一些近期的论文和解析**，欢迎大家一起**学习交流**哈~~~
-
-
-![](./FightingCVimg/wechat.jpg)
-
-强烈推荐大家关注[**知乎**](https://www.zhihu.com/people/jason-14-58-38/posts)账号和[**FightingCV公众号**](https://mp.weixin.qq.com/s/sgNw6XFBPcD20Ef3ddfE1w)，可以快速了解到最新优质的干货资源。
 
 
 
@@ -84,7 +46,7 @@ Hello，大家好，我是小马🚀🚀🚀
     - [12. Shuffle Attention Usage](#12-Shuffle-Attention-Usage)
     
     - [13. MUSE Attention Usage](#13-MUSE-Attention-Usage)
-  
+    
     - [14. SGE Attention Usage](#14-SGE-Attention-Usage)
 
     - [15. A2 Attention Usage](#15-A2-Attention-Usage)
@@ -104,7 +66,7 @@ Hello，大家好，我是小马🚀🚀🚀
     - [22. CoTAttention Usage](#22-CoTAttention-Usage)
 
     - [23. Residual Attention Usage](#23-Residual-Attention-Usage)
-  
+    
     - [24. S2 Attention Usage](#24-S2-Attention-Usage)
 
     - [25. GFNet Attention Usage](#25-GFNet-Attention-Usage)
