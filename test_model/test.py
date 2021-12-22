@@ -9,7 +9,7 @@ import time
 from typing import List
 
 
-
+import cv2
 import csv
 import pandas as pd
 from PIL import Image
@@ -151,3 +151,18 @@ import argparse
 # args = parser.parse_args()
 #
 # print(args.epoch_num)
+#
+# path = '/home/lyp/Data/people_dataset/train2017/FudanPed00006.png'
+# img = cv2.imread(path)
+# _,w,h = img.shape[::-1]
+# print(_,w,h)
+# path = '/home/lyp/code/LabelToolForDetection'
+#
+# for root, dirs, files in os.walk(path,topdown=True):
+#     for file in files:
+#         print(os.path.join(root, file))
+#
+#     for dir in dirs:
+#         print(os.path.join(
+#         path,dir))
+

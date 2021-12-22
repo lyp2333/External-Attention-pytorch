@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5f4d66a-4c56-4ab0-aa23-c8918678ff0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test_model/utils/visualize.py" afterDir="false" />
-    </list>
+    <list default="true" id="a5f4d66a-4c56-4ab0-aa23-c8918678ff0d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
