@@ -11,6 +11,8 @@ from typing import List
 
 import cv2
 import csv
+
+import numpy as np
 import pandas as pd
 from PIL import Image
 import matplotlib.pyplot as plt
@@ -21,6 +23,7 @@ from torchvision import models
 from sklearn import preprocessing
 from PIL import Image
 from utils.read_to_ndarray import *
+from test_model.utils import xyxy2cxcywh
 import argparse
 
 # os.makedirs(os.path.join('..',"one"),exist_ok=True)
@@ -165,4 +168,9 @@ import argparse
 #     for dir in dirs:
 #         print(os.path.join(
 #         path,dir))
-
+#
+# bboxes = [[1,2,3,4,1],[111,121,131,141,2],[221,231,241,242,3],[321,331,341,351,4]]
+# bboxes = np.array(bboxes)
+# bbox_trans = xyxy2cxcywh(bboxes)
+# print(bboxes)
+# print(bbox_trans)
