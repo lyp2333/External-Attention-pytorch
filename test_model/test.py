@@ -3,15 +3,18 @@
 # @Time : 2021/10/29 13:33
 # @File : test.py
 # @Software : PyCharm
+import multiprocessing
 import os
 import sys
 import time
 from typing import List
-
+from multiprocessing import pool,Queue
+from threading import Thread,Lock
 
 import cv2
 import csv
-
+import copy
+import numpy
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -25,7 +28,8 @@ from PIL import Image
 from utils.read_to_ndarray import *
 from test_model.utils import xyxy2cxcywh
 import argparse
-
+from loguru import logger
+from pycocotools.coco import COCO
 # os.makedirs(os.path.join('..',"one"),exist_ok=True)
 # wenjian = open(os.path.join('..','test','test.csv'))
 
@@ -172,5 +176,31 @@ import argparse
 # bboxes = [[1,2,3,4,1],[111,121,131,141,2],[221,231,241,242,3],[321,331,341,351,4]]
 # bboxes = np.array(bboxes)
 # bbox_trans = xyxy2cxcywh(bboxes)
-# print(bboxes)
-# print(bbox_trans)
+# print(bboxes) pnt(ox_trans)
+
+# dataset_dir = '/home/lyp/Data/dataset_anno'
+# path = '/home/lyp/Data/dataset_anno/annotations'
+# dir = 'instances_train2017.json'
+# coco = COCO(os.path.join(path,dir))
+# bear_ids = coco.getCatIds(catNms=['type_1'])
+# train_2017 = os.path.join(dataset_dir,'train2017')
+# img = []
+# for img_content in coco.loadImgs(coco.getImgIds(catIds=bear_ids)):
+#
+#     img_path = os.path.join(train_2017,img_content['file_name'])
+#     img.append(img_path)
+# img_bear1 = cv2.imread(img[0])
+# cv2.imshow('bear1',img_bear1)
+# cv2.waitKey(0)
+
+# def test(*args):
+#     a = copy.copy(args[0])
+#     a=4
+#     return a
+#
+# b = 1
+# print(test(b))
+# print(b)
+
+
+

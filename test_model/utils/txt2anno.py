@@ -33,13 +33,9 @@ def coor_fudan2txt():
     filenum = len(file_anno)
     filename = []
     for i in range(filenum):
-        if i < 9:
-            filename.append(f'FudanPed0000{i + 1}.jpg')
-        else:
-            filename.append(f'FudanPed000{i + 1}.jpg')
+        filename.append('FudanPed'+'{:05}'.format(i+1)+'.jpg')
     for num, i in enumerate(file_anno):
         coor_lines = []
-
         with open(i, 'r+') as f:
             content = f.readlines()
             for j in range(get_boxnum_fudan(dir_path)[num]):
@@ -72,10 +68,7 @@ def coor_penn2txt():
     filenum = len(file_anno)
     filename = []
     for i in range(filenum):
-        if i < 9:
-            filename.append(f'PennPed0000{i + 1}.jpg')
-        else:
-            filename.append(f'PennPed000{i + 1}.jpg')
+        filename.append('PennPed' + '{:05}'.format(i + 1) + '.jpg')
     for num, i in enumerate(file_anno):
         coor_lines = []
 
