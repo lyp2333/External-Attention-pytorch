@@ -8,8 +8,8 @@ import os
 import sys
 import time
 from typing import List
-from multiprocessing import pool,Queue
-from threading import Thread,Lock
+from multiprocessing import pool, Queue
+from threading import Thread, Lock
 
 import cv2
 import csv
@@ -30,6 +30,7 @@ from test_model.utils import xyxy2cxcywh
 import argparse
 from loguru import logger
 from pycocotools.coco import COCO
+
 # os.makedirs(os.path.join('..',"one"),exist_ok=True)
 # wenjian = open(os.path.join('..','test','test.csv'))
 
@@ -203,4 +204,20 @@ from pycocotools.coco import COCO
 # print(b)
 
 
-
+# img_path = '/home/lyp/test'
+#
+# img = [cv2.resize(cv2.cvtColor(cv2.imread(img_path + '/' + filename), cv2.COLOR_BGR2RGB), dsize=(300, 200)) for filename
+#        in os.listdir(img_path) if filename.endswith('.jpg')]
+# imgs = np.array(img)
+# rows = 2
+# cols = int(np.ceil(len(imgs) / rows))
+# plt.figure('test')
+# for i in range(rows):
+#     for j in range(cols):
+#         index = i * cols + j
+#         if index==7:
+#             continue
+#         plt.subplot(rows, cols, index + 1)
+#         plt.axis('off')
+#         plt.imshow(imgs[index])# only read in,not display
+# plt.show()
