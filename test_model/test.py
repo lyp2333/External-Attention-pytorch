@@ -10,7 +10,7 @@ import time
 from typing import List
 from multiprocessing import pool, Queue
 from threading import Thread, Lock
-
+from einops import *
 import cv2
 import csv
 import copy
@@ -204,20 +204,44 @@ from pycocotools.coco import COCO
 # print(b)
 
 
-# img_path = '/home/lyp/test'
-#
-# img = [cv2.resize(cv2.cvtColor(cv2.imread(img_path + '/' + filename), cv2.COLOR_BGR2RGB), dsize=(300, 200)) for filename
-#        in os.listdir(img_path) if filename.endswith('.jpg')]
-# imgs = np.array(img)
-# rows = 2
-# cols = int(np.ceil(len(imgs) / rows))
-# plt.figure('test')
+img_path = '/home/lyp/test'
+
+img = [cv2.resize(cv2.cvtColor(cv2.imread(img_path + '/' + filename), cv2.COLOR_BGR2RGB), dsize=(300, 300)) for filename
+       in os.listdir(img_path) if filename.endswith('.jpg')]
+imgs = np.array(img)
+rows = 2
+cols = int(np.ceil(len(imgs) / rows))
+plt.figure('test')
 # for i in range(rows):
 #     for j in range(cols):
 #         index = i * cols + j
-#         if index==7:
-#             continue
 #         plt.subplot(rows, cols, index + 1)
 #         plt.axis('off')
 #         plt.imshow(imgs[index])# only read in,not display
 # plt.show()
+# img_combine = rearrange(imgs, '(b1 b2) h w c -> (b1 h) (b2 w) c', b1=2)
+# img_patch = rearrange(imgs, 'b (h p_h) (w p_w) c -> (h w p_h) (b p_w) c', p_h=100, p_w=100)
+# img_bear = img_patch[:, 100:200, :]
+# img_recover = rearrange(img_bear, '(h w ph) pw c -> (h ph) (w pw) c', h=3, w=3)
+# plt.axis('off')
+# plt.imshow(img_recover)
+# plt.show()
+# a = np.ones((3,4))
+# b = np.ones((3,4))
+# c = [0,1,2]
+# a[0][1] = 1
+# print(a.all(axis=0))
+# print(type((a==b).all()))
+# test = np.ones((3, 4), dtype=float)
+# test_add = repeat(test, 'h w -> h w c', c=3)
+# print(test_add.shape)
+#
+# print(repeat(test, 'h w -> h b c w', b=2,c=9).shape)
+# test = [[2,3,1],[1,2,3],[3,2,1]]
+# test1 = copy.copy(test)
+# test = np.array(test)
+# test1 = np.array(test1)
+# # print(test.argsort())
+# c = np.stack((test,test1),axis=1)
+# d = np.concatenate((test,test1),axis=-2)
+# print(d.shape)
