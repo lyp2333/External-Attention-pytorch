@@ -27,6 +27,8 @@ from sklearn import preprocessing
 from PIL import Image
 from utils.read_to_ndarray import *
 from test_model.utils import xyxy2cxcywh
+from torch import nn
+from einops.layers.torch import *
 import argparse
 from loguru import logger
 from pycocotools.coco import COCO
@@ -206,9 +208,12 @@ from pycocotools.coco import COCO
 
 img_path = '/home/lyp/test'
 
-img = [cv2.resize(cv2.cvtColor(cv2.imread(img_path + '/' + filename), cv2.COLOR_BGR2RGB), dsize=(300, 300)) for filename
+img = [cv2.resize(cv2.cvtColor(cv2.imread(img_path + '/' + filename), cv2.COLOR_BGR2RGB), dsize=(400, 400)) for filename
        in os.listdir(img_path) if filename.endswith('.jpg')]
 imgs = np.array(img)
+imgs = torch.from_numpy(imgs)
+imgs_patch = rearrange(imgs, 'b (h p_h) (w p_w) c -> b (h w) (p_h p_w c)', p_h=100, p_w=100)
+
 rows = 2
 cols = int(np.ceil(len(imgs) / rows))
 plt.figure('test')
@@ -245,3 +250,55 @@ plt.figure('test')
 # c = np.stack((test,test1),axis=1)
 # d = np.concatenate((test,test1),axis=-2)
 # print(d.shape)
+# test =[0,1,2,3,4,5,6,7]
+# print(test[-2:0:-1])
+# path_to_emb = nn.Sequential(
+#             Rearrange('b c (h p1) (w p2) -> b (h w) (p1 p2 c)', p1 = 16, p2 = 16),
+#             nn.Linear(16, 10),
+#         )
+# a, b = path_to_emb[0:2]
+# print(a,b)
+# c = nn.Linear(16,10).weight.shape
+# print(c)
+
+'''
+
+## MAE_token_recover
+batch = 6
+num_patches = 16
+mask_ratio = 0.5
+num_masked = int(mask_ratio * num_patches)
+rand_indices = torch.rand(batch, num_patches, device='cpu').argsort(dim=-1)
+mask_indices, unmasked_indices = rand_indices[:, :num_masked], rand_indices[:, num_masked:]
+batch = torch.arange(batch)[:, None]
+
+masked_token = imgs_patch[batch, mask_indices]
+unmasked_token = imgs_patch[batch, unmasked_indices]
+img_not_recover = torch.cat((masked_token,unmasked_token),dim=1)
+
+
+def one_img_recover(img,index):
+       # img.shape = 16*30000
+       img_2recover = torch.zeros_like(img)
+       for ind, content in enumerate(img):
+              img_2recover[index[ind]] = content
+       return img_2recover
+def imgs_recover(imgs,indices):
+       imgs_revover = torch.zeros_like(imgs)
+       for i in range(len(imgs)):
+              imgs_revover[i] = one_img_recover(img=imgs[i],index=indices[i])
+       return imgs_revover
+
+imgs_back = imgs_recover(img_not_recover,rand_indices)
+imgs_normal = np.array(rearrange(imgs_back,'b (nh nw) (ph pw c) -> b (nh ph) (nw pw) c',nh=4,ph=100,c=3))
+
+# recover_show
+for i in range(rows):
+    for j in range(cols):
+        index = i * cols + j
+        plt.subplot(rows, cols, index + 1)
+        plt.axis('off')
+        plt.imshow(imgs_normal[index])# only read in,not display
+plt.show()
+
+'''
