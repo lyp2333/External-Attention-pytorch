@@ -12,6 +12,7 @@ from multiprocessing import pool, Queue
 from threading import Thread, Lock
 from einops import *
 import cv2
+import torch.nn.functional as F
 import csv
 import copy
 import numpy
@@ -261,19 +262,20 @@ plt.figure('test')
 # c = nn.Linear(16,10).weight.shape
 # print(c)
 
-'''
 
+'''
 ## MAE_token_recover
 batch = 6
 num_patches = 16
 mask_ratio = 0.5
 num_masked = int(mask_ratio * num_patches)
+num_unmasked = int((1-mask_ratio)*num_patches)
 rand_indices = torch.rand(batch, num_patches, device='cpu').argsort(dim=-1)
 mask_indices, unmasked_indices = rand_indices[:, :num_masked], rand_indices[:, num_masked:]
-batch = torch.arange(batch)[:, None]
-
-masked_token = imgs_patch[batch, mask_indices]
-unmasked_token = imgs_patch[batch, unmasked_indices]
+batch_mask,batch_unmask = repeat(torch.arange(batch),'h -> h w',w=num_masked),repeat(torch.arange(batch),'h -> h w',w=num_unmasked)
+masked_token = imgs_patch[batch_mask,mask_indices]
+unmasked_token = imgs_patch[batch_unmask, unmasked_indices]
+# print(masked_token.shape)
 img_not_recover = torch.cat((masked_token,unmasked_token),dim=1)
 
 
@@ -302,3 +304,38 @@ for i in range(rows):
 plt.show()
 
 '''
+'''
+# just remember index only has 2 types,int for index and bool for position
+Tensor = torch.randn(5, 7, 3)
+idx1 = torch.tensor([0, 4, 2],dtype=torch.long)
+idx2 = torch.tensor([5, 2, 6],dtype=torch.long)
+a = Tensor[idx1]
+print(Tensor[idx1].shape)# 3*7*3
+
+Tensor = torch.arange(0, 12).view(4, 3)
+rows_idx = torch.tensor([[0, 0], [3, 3]],dtype=torch.long)
+columns_idx = torch.tensor([[0, 2], [0, 2]],dtype=torch.long)
+a = Tensor[rows_idx,columns_idx]
+print(a)# 2*2
+
+M = torch.randn(4,2)
+index = torch.tensor([1,1,0,0])
+print(M[index>0,:].shape)# 2*2
+'''
+
+'''
+# test labelsmooth
+class_num = 10
+batch_num = 5
+output = torch.rand((batch_num,class_num))
+target = torch.tensor([2,3,4,1,2])
+smoothing_ratio = 0.1
+def labelsmoothing(output,target):
+       log_prob = F.log_softmax(output,dim=-1)
+       nll_loss = torch.gather(-log_prob,dim=-1,index=target[:,None]).squeeze(-1)
+       smooth_loss = -log_prob.mean(dim=-1)
+       loss = smoothing_ratio*smooth_loss + (1-smooth_loss)*nll_loss
+       return loss.mean()
+'''
+
+
