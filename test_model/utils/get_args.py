@@ -1,13 +1,12 @@
 import argparse
 import math
-
 import torch
 import os
 
-
 def Parser():
+
     # init
-    args = argparse.ArgumentParser(description='universa torch parser')
+    args = argparse.ArgumentParser(description='universal torch parser')
 
     # device
     args.add_argument('-d', '--device', default=torch.device('cuda0' if torch.cuda.is_available() else 'cpu'))

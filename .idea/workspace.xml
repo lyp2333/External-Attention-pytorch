@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5f4d66a-4c56-4ab0-aa23-c8918678ff0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test_model/utils/get_args.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_model/utils/set_seed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_model/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_model/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_model/utils/get_args.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_model/utils/get_args.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
