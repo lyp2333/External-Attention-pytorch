@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5f4d66a-4c56-4ab0-aa23-c8918678ff0d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test_model/utils/get_args.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_model/utils/set_seed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_model/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_model/test.py" afterDir="false" />
     </list>
@@ -37,7 +39,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.test">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="External-Attention-pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,9 +61,24 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test.test" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="External-Attention-pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_model" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test.test&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
+        <item itemvalue="Python tests.Python tests for test.test" />
       </list>
     </recent_temporary>
   </component>

@@ -337,5 +337,6 @@ def labelsmoothing(output,target):
        loss = smoothing_ratio*smooth_loss + (1-smooth_loss)*nll_loss
        return loss.mean()
 '''
+print(os.getcwd())
 
 
