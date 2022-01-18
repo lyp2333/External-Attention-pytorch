@@ -7,13 +7,9 @@
 ![](https://img.shields.io/badge/pytorch->=v1.4-red)
 
 -------
-*If this project is helpful to you, welcome to give a ***star***.* 
+*If this project is helpful to you, welcome to give a **star***. 
 
-*Don't forget to ***follow*** me to learn about project updates.*
-
--------
-
-
+*Don't forget to **follow** me to learn about project updates.*
 
 
 ***
@@ -79,7 +75,7 @@
 
     - [29. ParNet Attention Usage](#29-ParNet-Attention-Usage)
 
-  
+
 
 - [Backbone Series](#Backbone-series)
 

@@ -8,7 +8,7 @@ import os
 import sys
 import time
 from typing import List
-from multiprocessing import pool, Queue
+from multiprocessing import Process,pool, Queue
 from threading import Thread, Lock
 from einops import *
 import cv2
@@ -337,6 +337,28 @@ def labelsmoothing(output,target):
        loss = smoothing_ratio*smooth_loss + (1-smooth_loss)*nll_loss
        return loss.mean()
 '''
-print(os.getcwd())
+# def _test(args:int):
+#     time.sleep(0.5)
+#     print(f'this is {args} thread')
+#     print(f'pid:{os.getpid()}')
+if __name__ == '__main__':
+    # p1 = Thread(target=_test,args=(1,))
+    # p2 = Thread(target=_test,args=(2,))
+    # # p1.setDaemon(daemonic=True)
+    # p1.start()
+    # p2.start()
+    #
+    # # p1.join()
+    # # p2.join()
+    # print('this is main function')
+    # print(os.getpid())
 
+    # a = torch.tensor(range(9)).reshape((3,3))
+    # print(a.unsqueeze(-1).repeat())
+    noise = torch.rand(3, 10)  # noise in [0, 1]
 
+    # sort noise for each sample
+    ids_shuffle = torch.argsort(noise, dim=1)  # ascend: small is keep, large is remove
+    ids_restore = torch.argsort(ids_shuffle, dim=1)
+    print(ids_shuffle)
+    print(ids_restore)
