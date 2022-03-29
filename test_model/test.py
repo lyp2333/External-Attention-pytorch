@@ -8,7 +8,7 @@ import os
 import sys
 import time
 from typing import List
-from multiprocessing import Process,pool, Queue
+from multiprocessing import Process, pool, Queue
 from threading import Thread, Lock
 from einops import *
 import cv2
@@ -355,10 +355,63 @@ if __name__ == '__main__':
 
     # a = torch.tensor(range(9)).reshape((3,3))
     # print(a.unsqueeze(-1).repeat())
-    noise = torch.rand(3, 10)  # noise in [0, 1]
+    # noise = torch.rand(3, 10)  # noise in [0, 1]
+    #
+    # # sort noise for each sample
+    # ids_shuffle = torch.argsort(noise, dim=1)  # ascend: small is keep, large is remove
+    # ids_restore = torch.argsort(ids_shuffle, dim=1)
+    # print(ids_shuffle)
+    # print(ids_restore)
+    data_dir = '/home/lyp/Data/PartImageNet'
+    data_dic = {
+        name: os.path.join(data_dir, name) for name in os.listdir(data_dir)
+    }
 
-    # sort noise for each sample
-    ids_shuffle = torch.argsort(noise, dim=1)  # ascend: small is keep, large is remove
-    ids_restore = torch.argsort(ids_shuffle, dim=1)
-    print(ids_shuffle)
-    print(ids_restore)
+    coco = COCO(data_dic['val.json'])
+    fish_catids = coco.getCatIds(supNms=['Fish'])
+    fish_imgids = coco.getImgIds(catIds=fish_catids)
+    fish_imginfo = coco.loadImgs(fish_imgids)
+
+    fish_dir = fish_imginfo[0]['file_name'].split('_')[0]
+    fish_path = [os.path.join(data_dir, 'val', fish_dir, img['file_name']) for img in fish_imginfo[:4]]
+    imgs = [cv2.cvtColor(cv2.imread(img), cv2.COLOR_BGR2RGB) for img in fish_path]
+    # rows,cols = 2,2
+    # plt.figure(1)
+    # for i in range(rows):
+    #     for j in range(cols):
+    #         index = i * rows + j
+    #         plt.subplot(rows,cols,index+1)
+    #         plt.axis('off')
+    #         plt.imshow(imgs[index])
+    #
+    # plt.figure(2)
+    # fish_annids = []
+    # fish_annos = []
+    # for imgid in fish_imgids:
+    #     fish_annids.append(coco.getAnnIds([imgid]))
+    # for i in fish_annids:
+    #     print((coco.loadAnns(i)))
+    #     fish_annos.append(coco.loadAnns(i))
+    #
+    # for i in range(rows):
+    #     for j in range(cols):
+    #         index = i * rows + j
+    #         plt.subplot(rows,cols,index+1)
+    #         plt.axis('off')
+    #         plt.imshow(imgs[index])
+    #         coco.showAnns(fish_annos[index])
+    # plt.show()
+    fish_annoids = coco.getAnnIds(imgIds=fish_imgids)
+    fish_anns = coco.loadAnns(fish_annoids)
+    print([cat['name'] for cat in coco.loadCats([9,10,11,12])])
+    cat_num = [0,0,0,0]
+    for fish_anno in fish_anns:
+        if fish_anno['category_id'] == 9:
+            cat_num[0] = cat_num[0]+1
+        if fish_anno['category_id'] == 10:
+                cat_num[1] = cat_num[1] + 1
+        if fish_anno['category_id'] == 11:
+            cat_num[2] = cat_num[2]+1
+        if fish_anno['category_id'] == 12:
+            cat_num[3] = cat_num[3]+1
+    print(cat_num)

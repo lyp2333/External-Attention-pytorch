@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5f4d66a-4c56-4ab0-aa23-c8918678ff0d" name="Changes" comment="'modify get_args.py'">
-      <change afterPath="$PROJECT_DIR$/test_model/utils/caption2txt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test_model/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_model/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,10 +42,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mae" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../icCNN" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.caption2txt">
+  <component name="RunManager" selected="Python.test">
     <configuration name="caption2txt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="External-Attention-pytorch" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,8 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.caption2txt" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.caption2txt" />
         <item itemvalue="Python 测试.Python 测试 (test.py 内)" />
       </list>
     </recent_temporary>
